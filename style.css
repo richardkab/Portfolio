@@ -1,0 +1,163 @@
+:root {
+  --bg: #0b0f17;
+  --panel: #0f1624;
+  --text: #e9eef8;
+  --muted: rgba(233,238,248,.75);
+  --line: rgba(233,238,248,.12);
+  --accent: #7dd3fc;
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.container {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: rgba(11,15,23,.95);
+  border-bottom: 1px solid var(--line);
+  z-index: 50;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.brand {
+  font-weight: 700;
+}
+
+/* Burger */
+#nav-toggle { display: none; }
+
+.nav-btn {
+  width: 40px;
+  cursor: pointer;
+}
+
+.nav-btn span {
+  display: block;
+  height: 2px;
+  background: var(--text);
+  margin: 6px 0;
+}
+
+/* Mobile Nav (nicht fullscreen) */
+.nav {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 240px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-top: none;
+  padding: 16px 20px 20px;
+  display: none;
+}
+
+#nav-toggle:checked ~ .nav {
+  display: block;
+}
+
+.nav a {
+  display: block;
+  padding: 10px 0;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-close {
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+/* Sections */
+.hero { padding: 40px 0 24px; }
+.kicker { color: var(--muted); font-size: 14px; }
+.section { padding: 32px 0; }
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.bullets { padding-left: 18px; }
+
+.slider {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+.slider img {
+  max-width: 80%;
+  border-radius: var(--radius);
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.github-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Footer */
+.footer {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+  .nav {
+    position: static;
+    display: flex !important;
+    width: auto;
+    border: none;
+    padding: 0;
+    gap: 16px;
+  }
+
+  .nav-close,
+  .nav-btn {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .slider img {
+    max-width: 35%;
+  }
+}
